@@ -1,0 +1,35 @@
+server:  
+  port: 8080
+
+
+      
+spring:
+  h2: 
+   console: 
+     enabled: true
+  datasource: 
+    url: jdbc:h2:mem:testdb
+    driverClassName: org.h2.Driver
+    username: sa 
+    password: 
+  jpa: 
+   database-platform: org.hibernate.dialect.H2Dialect   
+   
+   
+security:
+ basic:
+  enabled: false
+  
+management:
+  security:
+   enabled: false
+   
+freedom: 
+   jwt:
+    token:
+     issuer: https://freedom.com/
+     secret: Di1!df^ase
+     ttl: 60
+   
+     
+
