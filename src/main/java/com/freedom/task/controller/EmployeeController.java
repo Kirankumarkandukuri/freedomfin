@@ -81,16 +81,22 @@ public class EmployeeController {
 			@ApiResponse(code = 404, message = "Not Found"), @ApiResponse(code = 500, message = "Server Failure"),
 			@ApiResponse(code = 400, message = "Bad Request"), @ApiResponse(code = 406, message = "NOT ACCEPTABLE") })
 	@RequestMapping(value = "/employee/{id}", method = RequestMethod.PUT)
-	public ResponseEntity<Employee> updateEmployee(@RequestBody Employee employee,
+	public ResponseEntity<Employee> updateEmployee(@RequestBody EmployeeDTO employeeDTO,
 			@PathVariable(value = "id") String id) {
 
-		log.info("Recieved a Update Employee Request" + employee.getId());
+		log.info("Recieved a Update Employee Request" + id);
 		// check if Employee exists
 		Employee existingEmployee = freedomTaskService.getEmployeeById(id);
 		if (existingEmployee == null) {
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
 		}
+		Employee employee = Employee.toEmployee(employeeDTO);
 		employee.setId(existingEmployee.getId());
+		Department department = departmentService.getDepartmentByDepartmentId(employeeDTO.getDepartmentId());
+		if (null == department) {
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+		}
+		employee.setDepartment(department);
 		employee = freedomTaskService.saveEmployee(employee);
 		if (employee != null) {
 			return ResponseEntity.status(HttpStatus.CREATED).body(employee);

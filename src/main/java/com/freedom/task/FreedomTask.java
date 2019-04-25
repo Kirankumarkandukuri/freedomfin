@@ -28,10 +28,10 @@ public class FreedomTask {
        return new RestTemplate();
     }
     
-    @Bean public FilterRegistrationBean simpleWebFilter() {
+     public FilterRegistrationBean simpleWebFilter() {
         FilterRegistrationBean registration = new FilterRegistrationBean();
         registration.setFilter(new SecurityFilter());
-        registration.addUrlPatterns("/employee","/department");
+       // registration.addUrlPatterns("/employee","/department");
         registration.setDispatcherTypes(EnumSet.allOf(DispatcherType.class));
         return registration;
     }

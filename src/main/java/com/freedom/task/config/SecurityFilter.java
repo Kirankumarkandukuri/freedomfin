@@ -50,6 +50,7 @@ public class SecurityFilter implements Filter {
 					chain.doFilter(request, response);
 				else
 					httpResponse.setStatus(HttpStatus.UNAUTHORIZED.value());
+				return;
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				httpResponse.setStatus(HttpStatus.UNAUTHORIZED.value());

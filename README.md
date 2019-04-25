@@ -1,4 +1,4 @@
-# Freedom Task
+## Freedom Task
 This contains two services for
 
 1.  Department entity 
