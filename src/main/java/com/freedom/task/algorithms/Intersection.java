@@ -44,6 +44,29 @@ public class Intersection {
     }
 
 
+    int arr3[] = {1,1,2,2,3,3,4,4,5,5,10};
+    int l=0;
+    while(l<arr3.length)
+    {
+      if(l==arr3.length-1)
+      {
+        if(arr3[l-1]!=arr3[l])
+          System.out.println(arr3[l]);
+        break;
+      }
+      if(arr3[l]!=arr3[l+1]){
+        if(l>0)
+        {
+          if(arr3[l-1]!=arr3[l])
+          {
+            System.out.println(arr3[l]);
+            break;
+          }
+        }
+      }
+      l++;
+    }
+
   }
 
 }
