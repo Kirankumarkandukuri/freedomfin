@@ -7,10 +7,13 @@ public class FInterface {
 	    new Thread(()-> 
 	       {System.out.println("New thread created");}).start(); 
 	    
-	    MyInterface inter = (int x) ->x*x;
+	    MyInterface inter = ( x) ->x*x;
 	    
 	    int ans =inter.calculate(5);
 	    System.out.println(ans);
+	    
+	    Thread t = new Thread(()-> System.out.println("Yes"));
+	    t.start();
 
 }
 }
